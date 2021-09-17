@@ -26,7 +26,7 @@ const fetchalbumFailure = () => {
 };
 
 export const fetchAlbumsAction = (albumid) => {
-  return (dispatch) => {
+  return async (dispatch, getstate) => {
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"

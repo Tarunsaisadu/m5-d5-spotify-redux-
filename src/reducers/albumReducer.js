@@ -1,5 +1,6 @@
 import {
   FETCH_ALBUM_ERROR,
+  FETCH_ALBUM_FAILURE,
   FETCH_ALBUM_REQUEST,
   FETCH_ALBUM_SUCCESS,
 } from "../action/fetchtypes";
@@ -23,7 +24,7 @@ const albumReducer = (state = initialState, action) => {
         albums: action.payload,
         error: "",
       };
-    case FETCH_ALBUM_ERROR:
+    case FETCH_ALBUM_FAILURE:
       return {
         loading: false,
         albums: {},

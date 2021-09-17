@@ -4,7 +4,11 @@ import { Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchAlbumsAction } from "../action/fetchActions";
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state) => {
+  return {
+    albumData: state.album,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbums: () => dispatch(fetchAlbumsAction()),
@@ -16,7 +20,7 @@ class Album extends React.Component {
     songs: [],
   };
 
-  componentDidMount = async () => {
+  componentDidMount = async ({ fetchAlbums }) => {
     let albumId = this.props.match.params.id;
 
     this.props.fetchAlbums();
@@ -59,19 +63,21 @@ class Album extends React.Component {
           </div>
         </Row>
         <Row>
-          {this.state.album.cover && (
+          {this.state.albums.cover && (
             <div className="col-md-3 pt-5 text-center" id="img-container">
               <img
-                src={this.state.album.cover}
+                src={this.state.albums.cover}
                 className="card-img img-fluid"
                 alt="Album"
               />
               <div className="mt-4 text-center">
-                <p className="album-title">{this.state.album.title}</p>
+                <p className="album-title">{this.state.albums.title}</p>
               </div>
               <div className="text-center">
                 <p className="artist-name">
-                  {this.state.album.artist ? this.state.album.artist.name : ""}
+                  {this.state.albums.artist
+                    ? this.state.albums.artists.name
+                    : ""}
                 </p>
               </div>
               <div className="mt-4 text-center">
