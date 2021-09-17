@@ -1,5 +1,9 @@
 import albumReducer from "../reducers/albumReducer";
 
+import { createStore, applyMiddleware, compose } from "redux";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+
 export const initialState = {
   loading: false,
   albums: {},
@@ -13,3 +17,5 @@ const configureStore = createStore(
     ? composeEnhancers(applyMiddleware(thunk))
     : compose(applyMiddleware(thunk))
 );
+
+export default configureStore;

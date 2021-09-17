@@ -14,7 +14,7 @@ const albumReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALBUM_REQUEST:
       return {
-        ...state, //state
+        ...state,
         loading: true,
       };
     case FETCH_ALBUM_SUCCESS:
